@@ -7,6 +7,27 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <!--Top Row Text Blocks-->
+        <TextBlock Text="TEXT" FontWeight="Bold" HorizontalAlignment="Left" Margin="41,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock Text="TEXT" FontWeight="Bold" HorizontalAlignment="Left" Margin="187,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock Text="TEXT" FontWeight="Bold" HorizontalAlignment="Left" Margin="343,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock Text="TEXT"  FontWeight="Bold" HorizontalAlignment="Left" Margin="473,58,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
+        <!--Top Row Text Boxs-->
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="23,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="160,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="304,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="452,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <!--Middle Text Blocks-->
+        <TextBlock Text ="TEXT" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="41,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock Text="TEXT" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="304,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <!--Header && Body Text Blocks-->
+        <TextBlock Text="TEXT" FontWeight="Bold" HorizontalAlignment="Left" Margin="53,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock Text="TEXT" FontWeight="Bold" HorizontalAlignment="Left" Margin="53,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <!--Header && Body Text Boxs-->
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="7,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188"/>
+        <TextBox HorizontalAlignment="Left" Height="107" Margin="7,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188"/>
+        <!--Buttons-->
+        <Button Content="TEXT" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="TEXT" HorizontalAlignment="Left" Margin="120,389,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>
