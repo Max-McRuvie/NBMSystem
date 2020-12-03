@@ -1,6 +1,5 @@
-﻿using NBMSystem.ViewModels;
-
-namespace NBM.ViewModel
+﻿
+namespace NBMSystem.ViewModels
 {
     public class MainWindowViewModel : BaseViewModel
     {
