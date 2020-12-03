@@ -13,10 +13,10 @@
         <TextBlock Text="{Binding SIRTextBlock}" FontWeight="Bold" HorizontalAlignment="Left" Margin="343,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock Text="{Binding TrendingTextBlock}"  FontWeight="Bold" HorizontalAlignment="Left" Margin="473,58,0,0" TextWrapping="Wrap"  VerticalAlignment="Top"/>
         <!--Top Row Text Boxs-->
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="23,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="160,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="304,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="452,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ListBox HorizontalAlignment="Left" Height="50" Margin="23,91,0,0" VerticalAlignment="Top" Width="120"/>
+        <ListBox HorizontalAlignment="Left" Height="50" Margin="160,91,0,0" VerticalAlignment="Top" Width="120"/>
+        <ListBox HorizontalAlignment="Left" Height="50" Margin="304,91,0,0" VerticalAlignment="Top" Width="120"/>
+        <ListBox HorizontalAlignment="Left" Height="50" Margin="452,91,0,0" VerticalAlignment="Top" Width="120"/>
         <!--Middle Text Blocks-->
         <TextBlock Text ="{Binding InputTextBlock}" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="41,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock Text="{Binding MessageProccessedTextBlock}" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="304,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
