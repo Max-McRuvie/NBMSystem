@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NBMSystem"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="600">
     <Grid>
         <!--Top Row Text Blocks-->
         <TextBlock Text="TEXT" FontWeight="Bold" HorizontalAlignment="Left" Margin="41,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
