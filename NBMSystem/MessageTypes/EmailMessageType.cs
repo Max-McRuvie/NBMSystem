@@ -38,6 +38,10 @@ namespace NBMSystem.MessageTypes
                 {
                     throw new ArgumentException("Error: Subject must be between 1 and 20 char long");
                 }
+                else
+                {
+                    e_subject = value;
+                }
             }
         }
 
@@ -47,6 +51,10 @@ namespace NBMSystem.MessageTypes
             set { if ((value.Length > 1028) || (value.Length < 1))
                 {
                     throw new ArgumentException("Error: Email must be between 1 and 1028 characters long");
+                }
+                else
+                {
+                    e_text = value;
                 }
 
             }

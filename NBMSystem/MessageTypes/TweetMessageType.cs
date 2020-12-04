@@ -15,6 +15,10 @@ namespace NBMSystem.MessageTypes
                 {
                     throw new ArgumentException("Error: The tweet sender must start with the @ symbol, and contain a maximum of 15 characters");
                 }
+                else
+                {
+                    t_sender = value;
+                }
             }
         }
 
@@ -24,7 +28,11 @@ namespace NBMSystem.MessageTypes
             set { if(value.Length > 140 || value.Length < 1)
                 {
                     throw new ArgumentException("Error: The tweet sender must start with the @ symbol, and be a length of less than 15");
-                } 
+                }
+                else
+                {
+                    t_text = value;
+                }
 
             }
         }
