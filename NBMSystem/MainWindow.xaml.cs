@@ -45,8 +45,12 @@ namespace NBMSystem
             message.Body = body;
 
             if (m_header[0].Equals('S')) { SmsSplit(message); }
+            else if (m_header[0].Equals('E')) { EmailSplit(message); }
         }
 
+        // Spilts message into vars,
+        // checks for abbreviation,
+        // creates SMS object
         private void SmsSplit(MessageInput message)
         {
             //Assigning variables
@@ -130,12 +134,15 @@ namespace NBMSystem
             SenderOutput.Text = SMS.SmsSender;
             SubNumOutput.Text = SMS.SmsNumber;
             TextOutput.Text = SMS.SmsText;
+        }
 
-
-
-
-
-
+        private void EmailSplit(MessageInput message)
+        {
+            string Header = message.Header;
+            string Body = message.Body;
+            string Sender = message.Body.Split(',')[0];
+            string Subject = message.Body.Split(',')[1];
+            string Text = Body.Split(',')[2];
         }
     }
 }
