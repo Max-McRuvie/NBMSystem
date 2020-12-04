@@ -110,7 +110,17 @@ namespace NBMSystem
                     }
                 }
             }
-            
+            // Creating Object
+            SmsMessageType SMS = new SmsMessageType()
+            {
+                Header = Header,
+                Body = Body,
+                SmsSender = Sender,
+                SmsNumber = Number,
+                SmsText = Text
+            };
+
+
         }
     }
 }
