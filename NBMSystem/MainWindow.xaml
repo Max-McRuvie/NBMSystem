@@ -24,8 +24,8 @@
         <TextBlock Text="{Binding HeaderTextBlock}" FontWeight="Bold" HorizontalAlignment="Left" Margin="53,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock Text="{Binding BodyTextBlock}" FontWeight="Bold" HorizontalAlignment="Left" Margin="53,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <!--Header && Body Text Boxs-->
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="7,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188"/>
-        <TextBox HorizontalAlignment="Left" Height="107" Margin="7,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188"/>
+        <TextBox x:Name="HeaderTextBox" HorizontalAlignment="Left" Height="23" Margin="7,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188"/>
+        <TextBox x:Name="BodyTextBox" HorizontalAlignment="Left" Height="107" Margin="7,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188"/>
         <!--Buttons-->
         <Button Content="{Binding SubmitButtonText}" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="{Binding SaveButtonText}" HorizontalAlignment="Left" Margin="120,389,0,0" VerticalAlignment="Top" Width="75"/>

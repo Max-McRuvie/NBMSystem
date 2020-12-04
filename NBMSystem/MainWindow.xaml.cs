@@ -15,5 +15,14 @@ namespace NBMSystem
 
             this.DataContext = new MainWindowViewModel();
         }
+
+        private void Submit(object sender, RoutedEventArgs e)
+        {
+            string header_text = HeaderTextBox.Text.ToUpper();
+            string body_text = BodyTextBox.Text;
+
+            
+        }
+
     }
 }
