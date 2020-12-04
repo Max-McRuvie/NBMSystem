@@ -119,6 +119,10 @@ namespace NBMSystem
                 SmsNumber = Number,
                 SmsText = Text
             };
+            //Addition to list for JSON
+            messages.Add(SMS);
+
+            
 
 
         }
