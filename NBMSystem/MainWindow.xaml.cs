@@ -41,6 +41,20 @@ namespace NBMSystem
 
             m_header = header.ToUpper();
             message.Header = m_header;
+
+            if (m_header[0].Equals('S')) { SmsSplit(message); }
+        }
+
+        private void SmsSplit(MessageInput message)
+        {
+            //Assigning variables
+            string Header = message.Header;
+            string Body = message.Body;
+            string Number = message.Body.Split(' ')[0];
+            string Sender = message.Body.Split(' ')[1];
+            string Text = message.Body.Replace(Sender, null).Replace(Number, null);
+
+
         }
     }
 }
