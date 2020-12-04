@@ -1,12 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NBMSystem.Input;
+using System;
 
 namespace NBMSystem.MessageTypes
 {
-    class SmsMessageType
+    public class SmsMessageType : MessageInput
     {
+        private string s_sender;
+        private string s_number;
+        private string s_text;
+
+        public SmsMessageType()
+        {
+
+        }
+
+        public string SmsSender
+        {
+            get { return s_sender; }
+            set { s_sender = value; }
+        }
+
+        public string SmsNumber
+        {
+            get { return s_number; }
+            set {
+                if (!value.StartsWith("+"))
+                {
+                    throw new ArgumentException("Error: The inserted phone number must begin with a country code");
+                }
+            }
+
+        }
+
+        public string SmsText
+        {
+            get { return s_text; }
+            set { 
+                if ((value.Length < 0) || (value.Length > 141))
+                {
+                    throw new ArgumentException("Error: Length must be between 0 and 141");
+                }
+                if (value == " ")
+                {
+                    throw new ArgumentException("Text must not be empty");
+                }
+                }
+        }
+
     }
 }
