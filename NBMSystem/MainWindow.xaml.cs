@@ -4,6 +4,8 @@ using NBMSystem.Input;
 using NBMSystem.MessageTypes;
 using System.Collections.Generic;
 using System.IO;
+using System;
+using System.Text.RegularExpressions;
 
 namespace NBMSystem
 {
@@ -23,7 +25,7 @@ namespace NBMSystem
         List<string> quarantine_url = new List<string>();
         List<string> mentions = new List<string>();
         Dictionary<string, int> hashtags = new Dictionary<string, int>();
-        Dictionary<string, string> incident_reports = new Dictionary<string, string>();
+        Dictionary<string, string> sir_reports = new Dictionary<string, string>();
 
         private void Submit(object sender, RoutedEventArgs e)
         {
@@ -159,7 +161,30 @@ namespace NBMSystem
             incidents.Add("Intelligence");
             incidents.Add("Cash Loss");
 
+            // Checking for SIR in Subject
+            if(Subject.Contains("SIR"))
+            {
+                Text = Body.Split(',')[2] + ", " + Body.Split(',')[3] + ", " + Body.Split(',')[4];
+                Boolean sir_logged = false;
 
+                foreach (string incident in incidents)
+                {
+                    string email_sir = ((Text.Split(',')[1]).ToLower());
+                    email_sir = Regex.Replace(email_sir, @"\s+", "");
+                    if (email_sir == incident)
+                    {
+                        sir_reports.Add(Text.Split(',')[0], Text.Split(',')[1]);
+                        SIRListBox.Items.Add(email_sir + ", " + Sender);
+                        sir_logged = true;
+                    }
+
+                }
+                if (!sir_logged)
+                {
+                    throw new ArgumentException("S.I.R cannot be found");
+                }
+
+            }
 
         }
     }
