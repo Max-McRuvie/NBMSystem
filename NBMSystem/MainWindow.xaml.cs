@@ -1,8 +1,9 @@
 ﻿using System.Windows;
 using NBMSystem.ViewModels;
 using NBMSystem.Input;
+using NBMSystem.MessageTypes;
 using System.Collections.Generic;
-
+using System.IO;
 
 namespace NBMSystem
 {
@@ -54,7 +55,62 @@ namespace NBMSystem
             string Sender = message.Body.Split(' ')[1];
             string Text = message.Body.Replace(Sender, null).Replace(Number, null);
 
+            //checking abbreviations
+            List<string> abbreviations = new List<string>();
+            List<string> abb_extended = new List<string>();
 
+            using (var reader = new StreamReader(@"../../../Documents/textwords.csv"))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var words = line.Split(',');
+                    abbreviations.Add(words[0]);
+                    abb_extended.Add(words[1]);
+                }
+            }
+            foreach (string word in Text.Split(' '))
+            {
+                foreach (string abr in abbreviations)
+                {
+                    if (word == abr)
+                    {
+                        //finding abbreviations and there meaning
+                        int index = abbreviations.IndexOf(abr);
+                        string all = abb_extended[index];
+
+                        //extending abbreviations
+                        string words = word + " <" + all + "> ";
+
+                        int index_2 = Text.IndexOf(word);
+
+                        char wordFinal;
+                        string wordFinal2;
+
+                        try
+                        {
+                            wordFinal = Text[index_2 + 1 + word.Length];
+
+                            wordFinal2 = wordFinal + "";
+                            if (wordFinal2.Contains("<"))
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                string newtext = Text.Replace(word, words);
+                                Text = newtext;
+                            }
+                        }
+                        catch
+                        {
+                            string newtext = Text.Replace(word, words);
+                            Text = newtext;
+                        }
+                    }
+                }
+            }
+            
         }
     }
 }
