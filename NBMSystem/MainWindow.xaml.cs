@@ -138,11 +138,29 @@ namespace NBMSystem
 
         private void EmailSplit(MessageInput message)
         {
+            // Assigning variables
             string Header = message.Header;
             string Body = message.Body;
             string Sender = message.Body.Split(',')[0];
             string Subject = message.Body.Split(',')[1];
             string Text = Body.Split(',')[2];
+
+            // Incident List
+            List<string> incidents = new List<string>();
+            incidents.Add("Theft");
+            incidents.Add("Staff_Attack");
+            incidents.Add("ATM_Theft");
+            incidents.Add("Raid");
+            incidents.Add("Customer_Attack");
+            incidents.Add("Staff_Abuse");
+            incidents.Add("Bomb_Threat");
+            incidents.Add("Terrorism");
+            incidents.Add("Suspicious_Incident");
+            incidents.Add("Intelligence");
+            incidents.Add("Cash Loss");
+
+
+
         }
     }
 }
