@@ -16,12 +16,12 @@ namespace NBMSystem.Input
 
         }
 
-        public string header
+        public string Header
         {
             get { return m_header; }
             set
             {
-                if (header.Length == 10)
+                if (value.Length == 10)
                 {
                     m_header = value;
                 }
@@ -33,10 +33,10 @@ namespace NBMSystem.Input
             }
         }
 
-        public string body
+        public string Body
         {
             get { return m_body; }
-            set { if (body.Length > 0)
+            set { if (value.Length > 0)
                 {
                     m_body = value;
                 }
