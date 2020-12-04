@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using NBMSystem.ViewModels;
+using NBMSystem.Input;
+using System.Collections.Generic;
 
 
 namespace NBMSystem
@@ -15,6 +17,12 @@ namespace NBMSystem
 
             this.DataContext = new MainWindowViewModel();
         }
+
+        List<MessageInput> messages = new List<MessageInput>();
+        List<string> quarantine_url = new List<string>();
+        List<string> mentions = new List<string>();
+        Dictionary<string, int> hashtags = new Dictionary<string, int>();
+        Dictionary<string, string> incident_reports = new Dictionary<string, string>();
 
         private void Submit(object sender, RoutedEventArgs e)
         {
