@@ -28,13 +28,12 @@
         <TextBox x:Name="BodyTextBox" HorizontalAlignment="Left" Height="107" Margin="7,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188"/>
         <!--Processed Message -->
         <TextBlock Text="{Binding MessagesTextBlock}" HorizontalAlignment="Left" Margin="252,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="169" FontSize="18"/>
-        <ComboBox x:Name="MessagesBox" HorizontalAlignment="Left" Margin="250,219,0,0" VerticalAlignment="Top" Width="282" Height="20
-                  " FontSize="16"/>
-        <TextBlock Text="{Binding SenderOutputTextBlock}" x:Name="SenderOutput" HorizontalAlignment="Left" Height="24" Margin="252,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="12"/>
-        <TextBlock Text="{Binding SubNumOutputTextBlock}" x:Name="SubNumOutput" HorizontalAlignment="Left" Height="23" Margin="252,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="12"/>
-        <TextBlock Text="{Binding TextOutput}" x:Name="TextOutput" HorizontalAlignment="Left" Margin="252,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="120" Width="280"/>
+        <ComboBox x:Name="MessagesBox" HorizontalAlignment="Left" Margin="250,222,0,0" VerticalAlignment="Top" Width="282" Height="28" FontSize="16"/>
+        <TextBlock Text="{Binding SenderOutputTextBlock} " x:Name="SenderOutput" HorizontalAlignment="Left" Height="24" Margin="252,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="12"/>
+        <TextBlock Text="{Binding SubNumOutputTextBlock} " x:Name="SubNumOutput" HorizontalAlignment="Left" Height="23" Margin="252,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="12"/>
+        <TextBlock Text="{Binding TextOutput} " x:Name="TextOutput" HorizontalAlignment="Left" Margin="252,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="101" Width="280"/>
         <!--Buttons-->
-        <Button Content="{Binding SubmitButtonText}" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="{Binding SubmitButtonText}" HorizontalAlignment="Left" Margin="10,389,0,0" VerticalAlignment="Top" Width="75" Click="Submit"/>
         <Button Content="{Binding SaveButtonText}" HorizontalAlignment="Left" Margin="120,389,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

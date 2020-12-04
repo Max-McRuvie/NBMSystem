@@ -42,6 +42,7 @@ namespace NBMSystem
 
             m_header = header.ToUpper();
             message.Header = m_header;
+            message.Body = body;
 
             if (m_header[0].Equals('S')) { SmsSplit(message); }
         }
@@ -122,7 +123,17 @@ namespace NBMSystem
             //Addition to list for JSON
             messages.Add(SMS);
 
-            
+            //Addition to list box
+            MessagesBox.Items.Add(SMS.Header);
+
+            // Outputs to UI
+            SenderOutput.Text = SMS.SmsSender;
+            SubNumOutput.Text = SMS.SmsNumber;
+            TextOutput.Text = SMS.SmsText;
+
+
+
+
 
 
         }

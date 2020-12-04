@@ -28,6 +28,10 @@ namespace NBMSystem.MessageTypes
                 {
                     throw new ArgumentException("Error: The inserted phone number must begin with a country code");
                 }
+                else
+                {
+                    s_number = value;
+                }
             }
 
         }
@@ -40,9 +44,13 @@ namespace NBMSystem.MessageTypes
                 {
                     throw new ArgumentException("Error: Length must be between 0 and 141");
                 }
-                if (value == " ")
+                else if (value == " ")
                 {
                     throw new ArgumentException("Text must not be empty");
+                }
+                else
+                {
+                    s_text = value;
                 }
                 }
         }
