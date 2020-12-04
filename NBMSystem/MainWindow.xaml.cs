@@ -29,8 +29,18 @@ namespace NBMSystem
             string header_text = HeaderTextBox.Text.ToUpper();
             string body_text = BodyTextBox.Text;
 
-            
+            MessageSplit(header_text, body_text);
         }
 
+        // Spliting the MessageInput into there category
+        private void MessageSplit(string header, string body)
+        {
+            MessageInput message = new MessageInput();
+
+            string m_header;
+
+            m_header = header.ToUpper();
+            message.Header = m_header;
+        }
     }
 }
