@@ -20,6 +20,13 @@ namespace NBMSystem.ViewModels
         public string BodyTextBlock { get; private set; }
         #endregion
 
+        #region Processed Messages Section
+        public string MessagesTextBlock { get; private set; }
+        public string SenderOutputTextBlock { get; private set; }
+        public string SubNumOutputTextBlock { get; private set; }
+        public string TextOutput { get; private set; }
+        #endregion
+
         #region Buttons
         public string SubmitButtonText { get; private set; }
         public string SaveButtonText { get; private set; }
@@ -42,6 +49,13 @@ namespace NBMSystem.ViewModels
             #region Header and body text block
             HeaderTextBlock = "Message Header";
             BodyTextBlock = "Message Body";
+            #endregion
+
+            #region Processed Messages Section
+            MessagesTextBlock = "Messages";
+            SenderOutputTextBlock = "Sender: ";
+            SubNumOutputTextBlock = "Subject or Number: ";
+            TextOutput = "Message: ";
             #endregion
 
             #region Buttons
