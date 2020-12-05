@@ -183,7 +183,23 @@ namespace NBMSystem
                 {
                     throw new ArgumentException("SIR cannot be found");
                 }
+            }
 
+            // Checking URLs
+            foreach (string word in text.Split(' '))
+            {
+                if(word.StartsWith("http:") || word.StartsWith("https:") || word.StartsWith("www."))
+                {
+                    text = text.Replace(word, "<URL Quarintined>");
+                    foreach (string word1 in (text).Split(' '))
+                    {
+                        if (!quarantineUrl.Contains(word))
+                        {
+                            quarantineUrl.Add(word);
+                            UrlQuarintineListBox.Items.Add(word);
+                        }
+                    }
+                }
             }
 
         }
