@@ -33,7 +33,7 @@
         <TextBlock Text="{Binding SubNumOutputTextBlock}" x:Name="SubNumOutput" HorizontalAlignment="Left" Height="23" Margin="250,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="280" FontSize="12"/>
         <TextBlock Text="{Binding TextOutput}" x:Name="TextOutput" HorizontalAlignment="Left" Margin="250,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="101" Width="280"/>
         <!--Buttons-->
-        <Button Content="{Binding SubmitButtonText}" HorizontalAlignment="Left" Margin="7,389,0,0" VerticalAlignment="Top" Width="75" Click="Submit"/>
+        <Button Content="{Binding SubmitButtonText}" HorizontalAlignment="Left" Margin="7,389,0,0" VerticalAlignment="Top" Width="75" Click="MessageTypeSplit"/>
         <Button Content="{Binding SaveButtonText}" HorizontalAlignment="Left" Margin="120,389,0,0" VerticalAlignment="Top" Width="75"/>
         
     </Grid>
