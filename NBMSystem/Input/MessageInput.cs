@@ -11,11 +11,6 @@ namespace NBMSystem.Input
         private string mHeader;
         private string mBody;
 
-        public MessageInput()
-        {
-
-        }
-
         public string Header
         {
             get { return mHeader; }
