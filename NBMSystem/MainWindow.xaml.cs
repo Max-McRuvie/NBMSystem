@@ -161,16 +161,14 @@ namespace NBMSystem
         private void EmailSplit(MessageInput message)
         {
             // Assigning variables
-            string header = message.Header;
-            string body = message.Body;
             string sender = message.Body.Split(',')[0];
             string subject = message.Body.Split(',')[1];
-            string text = body.Split(',')[2];
+            string text = message.Body.Split(',')[2];
 
             // Checking for SIR in Subject
             if(subject.Contains("SIR"))
             {
-                text = body.Split(',')[2] + ", " + body.Split(',')[3] + ", " + body.Split(',')[4];
+                text = message.Body.Split(',')[2] + ", " + message.Body.Split(',')[3] + ", " + message.Body.Split(',')[4];
                 Boolean sirLogged = false;
 
                 foreach (string incident in this.incidentList)
@@ -211,8 +209,8 @@ namespace NBMSystem
             // Creating object
             EmailMessageType email = new EmailMessageType()
             {
-                Header = header,
-                Body = body,
+                Header = message.Header,
+                Body = message.Body,
                 EmailSender = sender,
                 EmailSubject = subject,
                 EmailText = text
