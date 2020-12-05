@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace NBMSystem
 {
@@ -15,11 +16,11 @@ namespace NBMSystem
     public partial class MainWindow : Window
     {
         
-        List<MessageInput> messages = new List<MessageInput>(); // message list
-        List<string> quarantineUrl = new List<string>(); // URL quarintine list
+        List<MessageInput> messagesList = new List<MessageInput>(); // message list
+        List<string> quarantineUrlList = new List<string>(); // URL quarintine list
         List<string> mentionsList = new List<string>(); // mentons list
         Dictionary<string, int> hashtagsDict = new Dictionary<string, int>(); // hashtag list
-        Dictionary<string, string> sirReports = new Dictionary<string, string>(); // SIR report list
+        Dictionary<string, string> sirReportsDict = new Dictionary<string, string>(); // SIR report list
         List<string> incidentList = new List<string>(); // incident list
 
         public MainWindow()
@@ -66,6 +67,10 @@ namespace NBMSystem
             else if (header[0].Equals('E')) 
             { 
                 EmailSplit(message); 
+            }
+            else if (header[0].Equals('T'))
+            {
+                TweetSplit(message);
             }
         }
 
@@ -142,7 +147,7 @@ namespace NBMSystem
                 SmsText = text
             };
             //Addition to list for JSON
-            messages.Add(sms);
+            messagesList.Add(sms);
 
             //Addition to list box
             MessagesBox.Items.Add(sms.Header);
@@ -174,7 +179,7 @@ namespace NBMSystem
                     emailSir = Regex.Replace(emailSir, @"\s+", "");
                     if (emailSir == incident)
                     {
-                        sirReports.Add(text.Split(',')[0], text.Split(',')[1]);
+                        sirReportsDict.Add(text.Split(',')[0], text.Split(',')[1]);
                         SirListBox.Items.Add(emailSir + ", " + sender);
                         sirLogged = true;
                     }
@@ -194,9 +199,9 @@ namespace NBMSystem
                     text = text.Replace(word, "<URL Quarintined>");
                     foreach (string word1 in (text).Split(' '))
                     {
-                        if (!quarantineUrl.Contains(word))
+                        if (!quarantineUrlList.Contains(word))
                         {
-                            quarantineUrl.Add(word);
+                            quarantineUrlList.Add(word);
                             UrlQuarintineListBox.Items.Add(word);
                         }
                     }
@@ -214,7 +219,7 @@ namespace NBMSystem
             };
 
             //Addition to list for JSON
-            messages.Add(email);
+            messagesList.Add(email);
 
             //Addition to list box
             MessagesBox.Items.Add(email.Header);
@@ -309,7 +314,29 @@ namespace NBMSystem
                     }
                 }
             }
-
+            // Creating Object
+            TweetMessageType tweet = new TweetMessageType()
+            {
+                Header = message.Header,
+                Body = message.Body,
+                TweetSender = sender,
+                TweetText = text
+            };
+            // Add to message List
+            messagesList.Add(tweet);
+            // Adding to listbox
+            MessagesBox.Items.Add(tweet.Header);
+            // Outputs
+            SenderOutput.Text = " ";
+            SubNumOutput.Text = tweet.TweetSender;
+            TextOutput.Text = tweet.TweetText;
+            // Trending List
+            TrendingListBox.Items.Clear();
+            var sort = hashtagsDict.OrderBy(x => x.Value);
+            foreach(var item in sort.OrderByDescending(key => key.Value))
+            {
+                TrendingListBox.Items.Add(item);
+            }
 
         }
     }
