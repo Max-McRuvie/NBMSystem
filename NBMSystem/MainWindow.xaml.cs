@@ -256,6 +256,61 @@ namespace NBMSystem
                     }
                 }
             }
+            //checking abbreviations
+            List<string> abbreviations = new List<string>();
+            List<string> abb_extended = new List<string>();
+
+            using (var reader = new StreamReader(@"../../../Documents/textwords.csv"))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    var words = line.Split(',');
+                    abbreviations.Add(words[0]);
+                    abb_extended.Add(words[1]);
+                }
+            }
+            foreach (string word in text.Split(' '))
+            {
+                foreach (string abr in abbreviations)
+                {
+                    if (word == abr)
+                    {
+                        //finding abbreviations and there meaning
+                        int index = abbreviations.IndexOf(abr);
+                        string all = abb_extended[index];
+
+                        //extending abbreviations
+                        string words = word + " <" + all + "> ";
+
+                        int index_2 = text.IndexOf(word);
+
+                        char wordFinal;
+                        string wordFinal2;
+
+                        try
+                        {
+                            wordFinal = text[index_2 + 1 + word.Length];
+
+                            wordFinal2 = wordFinal + "";
+                            if (wordFinal2.Contains("<"))
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                text = text.Replace(word, words);
+                            }
+                        }
+                        catch
+                        {
+                            text = text.Replace(word, words);
+                        }
+                    }
+                }
+            }
+
+
         }
     }
 }
