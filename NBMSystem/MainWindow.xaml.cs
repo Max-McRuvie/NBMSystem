@@ -42,33 +42,25 @@ namespace NBMSystem
 
             this.DataContext = new MainWindowViewModel();
         }
-
-        private void Submit(object sender, RoutedEventArgs e)
-        {
-            string headerText = HeaderTextBox.Text.ToUpper();
-            string bodyText = BodyTextBox.Text;
-
-            MessageTypeSplit(headerText, bodyText);
-        }
-
+        
         // Spliting the MessageInput into there category
-        private void MessageTypeSplit(string header, string body)
+        private void MessageTypeSplit(object sender, RoutedEventArgs e)
         {
             MessageInput message = new MessageInput();
 
-            message.Header = header.ToUpper();
-            message.Body = body;
+            message.Header = HeaderTextBox.Text.ToUpper();
+            message.Body = BodyTextBox.Text;
 
             // Calling methods depending on starting char
-            if (header[0].Equals('S')) 
+            if (message.Header[0].Equals('S')) 
             { 
                 SmsSplit(message); 
             }
-            else if (header[0].Equals('E')) 
+            else if (message.Header[0].Equals('E')) 
             { 
                 EmailSplit(message); 
             }
-            else if (header[0].Equals('T'))
+            else if (message.Header[0].Equals('T'))
             {
                 TweetSplit(message);
             }
