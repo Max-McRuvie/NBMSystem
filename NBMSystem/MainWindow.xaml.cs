@@ -74,9 +74,9 @@ namespace NBMSystem
         private void SmsSplit(MessageInput message)
         {
             //Assigning variables
-            string Number = message.Body.Split(' ')[0];
-            string Sender = message.Body.Split(' ')[1];
-            string Text = message.Body.Replace(Sender, null).Replace(Number, null);
+            string number = message.Body.Split(' ')[0];
+            string sender = message.Body.Split(' ')[1];
+            string text = message.Body.Replace(sender, null).Replace(number, null);
 
             //checking abbreviations
             List<string> abbreviations = new List<string>();
@@ -92,7 +92,7 @@ namespace NBMSystem
                     abb_extended.Add(words[1]);
                 }
             }
-            foreach (string word in Text.Split(' '))
+            foreach (string word in text.Split(' '))
             {
                 foreach (string abr in abbreviations)
                 {
@@ -105,14 +105,14 @@ namespace NBMSystem
                         //extending abbreviations
                         string words = word + " <" + all + "> ";
 
-                        int index_2 = Text.IndexOf(word);
+                        int index_2 = text.IndexOf(word);
 
                         char wordFinal;
                         string wordFinal2;
 
                         try
                         {
-                            wordFinal = Text[index_2 + 1 + word.Length];
+                            wordFinal = text[index_2 + 1 + word.Length];
 
                             wordFinal2 = wordFinal + "";
                             if (wordFinal2.Contains("<"))
@@ -121,12 +121,12 @@ namespace NBMSystem
                             }
                             else
                             {
-                                Text = Text.Replace(word, words);
+                                text = text.Replace(word, words);
                             }
                         }
                         catch
                         {
-                            Text = Text.Replace(word, words);
+                            text = text.Replace(word, words);
                         }
                     }
                 }
@@ -136,9 +136,9 @@ namespace NBMSystem
             {
                 Header = message.Header,
                 Body = message.Body,
-                SmsSender = Sender,
-                SmsNumber = Number,
-                SmsText = Text
+                SmsSender = sender,
+                SmsNumber = number,
+                SmsText = text
             };
             //Addition to list for JSON
             messages.Add(SMS);
