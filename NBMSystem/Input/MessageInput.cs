@@ -8,8 +8,8 @@ namespace NBMSystem.Input
 {
     public class MessageInput
     {
-        private string m_header;
-        private string m_body;
+        private string mHeader;
+        private string mBody;
 
         public MessageInput()
         {
@@ -18,12 +18,12 @@ namespace NBMSystem.Input
 
         public string Header
         {
-            get { return m_header; }
+            get { return mHeader; }
             set
             {
                 if (value.Length == 10)
                 {
-                    m_header = value;
+                    mHeader = value;
                 }
                 else
                 {
@@ -35,10 +35,10 @@ namespace NBMSystem.Input
 
         public string Body
         {
-            get { return m_body; }
+            get { return mBody; }
             set { if (value.Length > 0)
                 {
-                    m_body = value;
+                    mBody = value;
                 }
                 else
                 {
