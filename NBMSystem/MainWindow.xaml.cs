@@ -132,7 +132,7 @@ namespace NBMSystem
                 }
             }
             // Creating Object
-            SmsMessageType SMS = new SmsMessageType()
+            SmsMessageType sms = new SmsMessageType()
             {
                 Header = message.Header,
                 Body = message.Body,
@@ -141,15 +141,15 @@ namespace NBMSystem
                 SmsText = text
             };
             //Addition to list for JSON
-            messages.Add(SMS);
+            messages.Add(sms);
 
             //Addition to list box
-            MessagesBox.Items.Add(SMS.Header);
+            MessagesBox.Items.Add(sms.Header);
 
             // Outputs to UI
-            SenderOutput.Text = SMS.SmsSender;
-            SubNumOutput.Text = SMS.SmsNumber;
-            TextOutput.Text = SMS.SmsText;
+            SenderOutput.Text = sms.SmsSender;
+            SubNumOutput.Text = sms.SmsNumber;
+            TextOutput.Text = sms.SmsText;
         }
 
         private void EmailSplit(MessageInput message)
@@ -212,6 +212,16 @@ namespace NBMSystem
                 EmailText = text
             };
 
+            //Addition to list for JSON
+            messages.Add(email);
+
+            //Addition to list box
+            MessagesBox.Items.Add(email.Header);
+
+            // Outputs to UI
+            SenderOutput.Text = email.EmailSender;
+            SubNumOutput.Text = email.EmailSubject;
+            TextOutput.Text = email.EmailText;
         }
     }
 }
