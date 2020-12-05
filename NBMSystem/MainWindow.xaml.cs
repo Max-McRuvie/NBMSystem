@@ -26,6 +26,7 @@ namespace NBMSystem
         {
             InitializeComponent();
 
+            // Adding contents to incidentList
             this.incidentList.Add("theft");
             this.incidentList.Add("staffattack");
             this.incidentList.Add("atmtheft");
@@ -46,11 +47,11 @@ namespace NBMSystem
             string headerText = HeaderTextBox.Text.ToUpper();
             string bodyText = BodyTextBox.Text;
 
-            MessageSplit(headerText, bodyText);
+            MessageTypeSplit(headerText, bodyText);
         }
 
         // Spliting the MessageInput into there category
-        private void MessageSplit(string header, string body)
+        private void MessageTypeSplit(string header, string body)
         {
             MessageInput message = new MessageInput();
 
