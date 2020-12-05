@@ -17,8 +17,8 @@ namespace NBMSystem
         
         List<MessageInput> messages = new List<MessageInput>(); // message list
         List<string> quarantineUrl = new List<string>(); // URL quarintine list
-        List<string> mentions = new List<string>(); // mentons list
-        Dictionary<string, int> hashtags = new Dictionary<string, int>(); // hashtag list
+        List<string> mentionsList = new List<string>(); // mentons list
+        Dictionary<string, int> hashtagsDict = new Dictionary<string, int>(); // hashtag list
         Dictionary<string, string> sirReports = new Dictionary<string, string>(); // SIR report list
         List<string> incidentList = new List<string>(); // incident list
 
@@ -232,6 +232,30 @@ namespace NBMSystem
             string sender = message.Body.Split(' ')[0];
             string text = message.Body.Replace(sender, null);
 
+            // Search for # and @
+            foreach(string word in text.Split(' '))
+            {
+                // @ Search
+                if (word.StartsWith("@"))
+                {
+                    if (!mentionsList.Contains(word)){
+                        mentionsList.Add(word);
+                        MentionListBox.Items.Add(word);
+                    }
+                }
+                // # Search
+                if (word.StartsWith("#"))
+                {
+                    if (hashtagsDict.ContainsKey(word))
+                    {
+                        hashtagsDict[word] += 1;
+                    }
+                    else
+                    {
+                        hashtagsDict.Add(word, 1);
+                    }
+                }
+            }
         }
     }
 }
