@@ -17,7 +17,8 @@ namespace NBMSystem.MessageTypes
             {
                 try
                 {
-                    MailAddress mail = new MailAddress(value);
+                    eSender = value;
+                    MailAddress mail = new MailAddress(eSender);
                 }
                 catch
                 {
