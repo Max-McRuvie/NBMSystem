@@ -5,9 +5,9 @@ namespace NBMSystem.MessageTypes
 {
     public class SmsMessageType : MessageInput
     {
-        private string s_sender;
-        private string s_number;
-        private string s_text;
+        private string sSender;
+        private string sNumber;
+        private string sText;
 
         public SmsMessageType()
         {
@@ -16,13 +16,13 @@ namespace NBMSystem.MessageTypes
 
         public string SmsSender
         {
-            get { return s_sender; }
-            set { s_sender = value; }
+            get { return sSender; }
+            set { sSender = value; }
         }
 
         public string SmsNumber
         {
-            get { return s_number; }
+            get { return sNumber; }
             set {
                 if (!value.StartsWith("+"))
                 {
@@ -30,7 +30,7 @@ namespace NBMSystem.MessageTypes
                 }
                 else
                 {
-                    s_number = value;
+                    sNumber = value;
                 }
             }
 
@@ -38,7 +38,7 @@ namespace NBMSystem.MessageTypes
 
         public string SmsText
         {
-            get { return s_text; }
+            get { return sText; }
             set { 
                 if ((value.Length < 0) || (value.Length > 141))
                 {
@@ -50,7 +50,7 @@ namespace NBMSystem.MessageTypes
                 }
                 else
                 {
-                    s_text = value;
+                    sText = value;
                 }
                 }
         }

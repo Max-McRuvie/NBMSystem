@@ -6,9 +6,9 @@ namespace NBMSystem.MessageTypes
 {
     public class EmailMessageType : MessageInput
     {
-        private string e_sender;
-        private string e_subject;
-        private string e_text;
+        private string eSender;
+        private string eSubject;
+        private string eText;
 
         EmailMessageType()
         {
@@ -17,7 +17,7 @@ namespace NBMSystem.MessageTypes
 
         public string EmailSender
         {
-            get { return e_sender; }
+            get { return eSender; }
             set
             {
                 try
@@ -33,28 +33,28 @@ namespace NBMSystem.MessageTypes
 
         public string EmailSubject
         {
-            get { return e_subject; }
+            get { return eSubject; }
             set { if((value.Length > 20) || (value.Length < 1))
                 {
                     throw new ArgumentException("Error: Subject must be between 1 and 20 char long");
                 }
                 else
                 {
-                    e_subject = value;
+                    eSubject = value;
                 }
             }
         }
 
         public string EmailText
         {
-            get { return e_text; }
+            get { return eText; }
             set { if ((value.Length > 1028) || (value.Length < 1))
                 {
                     throw new ArgumentException("Error: Email must be between 1 and 1028 characters long");
                 }
                 else
                 {
-                    e_text = value;
+                    eText = value;
                 }
 
             }
