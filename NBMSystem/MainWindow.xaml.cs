@@ -64,6 +64,10 @@ namespace NBMSystem
             {
                 TweetSplit(message);
             }
+            else
+            {
+                throw new ArgumentException("Error: Header does not contain 'S', 'E', or 'T' chars");
+            }
         }
 
         // Spilts message into vars,
@@ -177,7 +181,7 @@ namespace NBMSystem
                 }
                 if (!sirLogged)
                 {
-                    throw new ArgumentException("SIR cannot be found");
+                    throw new ArgumentException("Error: SIR cannot be found");
                 }
             }
 
