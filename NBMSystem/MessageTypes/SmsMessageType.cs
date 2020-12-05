@@ -9,11 +9,6 @@ namespace NBMSystem.MessageTypes
         private string sNumber;
         private string sText;
 
-        public SmsMessageType()
-        {
-
-        }
-
         public string SmsSender
         {
             get { return sSender; }

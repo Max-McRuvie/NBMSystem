@@ -10,11 +10,6 @@ namespace NBMSystem.MessageTypes
         private string eSubject;
         private string eText;
 
-        EmailMessageType()
-        {
-
-        }
-
         public string EmailSender
         {
             get { return eSender; }

@@ -202,6 +202,16 @@ namespace NBMSystem
                 }
             }
 
+            // Creating object
+            EmailMessageType email = new EmailMessageType()
+            {
+                Header = header,
+                Body = body,
+                EmailSender = sender,
+                EmailSubject = subject,
+                EmailText = text
+            };
+
         }
     }
 }
