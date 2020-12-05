@@ -224,5 +224,14 @@ namespace NBMSystem
             SubNumOutput.Text = email.EmailSubject;
             TextOutput.Text = email.EmailText;
         }
+
+        // Tweet Split
+        private void TweetSplit(MessageInput message)
+        {
+            // Declaring variables
+            string sender = message.Body.Split(' ')[0];
+            string text = message.Body.Replace(sender, null);
+
+        }
     }
 }
