@@ -326,12 +326,11 @@ namespace NBMSystem
             TextOutput.Text = tweet.TweetText;
             // Trending List
             TrendingListBox.Items.Clear();
-            var sort = hashtagsDict.OrderBy(x => x.Value);
-            foreach(var item in sort.OrderByDescending(key => key.Value))
+            var tSort = hashtagsDict.OrderBy(x => x.Value);
+            foreach(var item in tSort.OrderByDescending(key => key.Value))
             {
                 TrendingListBox.Items.Add(item);
             }
-
         }
     }
 }
