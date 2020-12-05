@@ -15,7 +15,7 @@
         <!--Top Row Text Boxs-->
         <ListBox x:Name="UrlQuarintineListBox" HorizontalAlignment="Left" Height="50" Margin="23,91,0,0" VerticalAlignment="Top" Width="120"/>
         <ListBox x:Name="MentionListBox" HorizontalAlignment="Left" Height="50" Margin="160,91,0,0" VerticalAlignment="Top" Width="120"/>
-        <ListBox x:Name="SIRListBox" HorizontalAlignment="Left" Height="50" Margin="304,91,0,0" VerticalAlignment="Top" Width="120"/>
+        <ListBox x:Name="SirListBox" HorizontalAlignment="Left" Height="50" Margin="304,91,0,0" VerticalAlignment="Top" Width="120"/>
         <ListBox x:Name="TrendingListBox" HorizontalAlignment="Left" Height="50" Margin="452,91,0,0" VerticalAlignment="Top" Width="120"/>
         <!--Middle Text Blocks-->
         <TextBlock Text ="{Binding InputTextBlock}" FontWeight="Bold" FontSize="16" HorizontalAlignment="Left" Margin="41,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>

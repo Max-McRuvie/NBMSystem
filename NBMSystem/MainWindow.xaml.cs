@@ -14,25 +14,39 @@ namespace NBMSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+        
+        List<MessageInput> messages = new List<MessageInput>(); // message list
+        List<string> quarantineUrl = new List<string>(); // URL quarintine list
+        List<string> mentions = new List<string>(); // mentons list
+        Dictionary<string, int> hashtags = new Dictionary<string, int>(); // hashtag list
+        Dictionary<string, string> sirReports = new Dictionary<string, string>(); // SIR report list
+        List<string> incidentList = new List<string>(); // incident list
+
         public MainWindow()
         {
             InitializeComponent();
 
+            this.incidentList.Add("theft");
+            this.incidentList.Add("staffattack");
+            this.incidentList.Add("atmtheft");
+            this.incidentList.Add("raid");
+            this.incidentList.Add("customerattack");
+            this.incidentList.Add("staffabuse");
+            this.incidentList.Add("bombthreat");
+            this.incidentList.Add("terrorism");
+            this.incidentList.Add("suspiciousincident");
+            this.incidentList.Add("intelligence");
+            this.incidentList.Add("cashloss");
+
             this.DataContext = new MainWindowViewModel();
         }
 
-        List<MessageInput> messages = new List<MessageInput>();
-        List<string> quarantine_url = new List<string>();
-        List<string> mentions = new List<string>();
-        Dictionary<string, int> hashtags = new Dictionary<string, int>();
-        Dictionary<string, string> sir_reports = new Dictionary<string, string>();
-
         private void Submit(object sender, RoutedEventArgs e)
         {
-            string header_text = HeaderTextBox.Text.ToUpper();
-            string body_text = BodyTextBox.Text;
+            string headerText = HeaderTextBox.Text.ToUpper();
+            string bodyText = BodyTextBox.Text;
 
-            MessageSplit(header_text, body_text);
+            MessageSplit(headerText, bodyText);
         }
 
         // Spliting the MessageInput into there category
@@ -40,14 +54,18 @@ namespace NBMSystem
         {
             MessageInput message = new MessageInput();
 
-            string m_header;
-
-            m_header = header.ToUpper();
-            message.Header = m_header;
+            message.Header = header.ToUpper();
             message.Body = body;
 
-            if (m_header[0].Equals('S')) { SmsSplit(message); }
-            else if (m_header[0].Equals('E')) { EmailSplit(message); }
+            // Calling methods depending on starting char
+            if (header[0].Equals('S')) 
+            { 
+                SmsSplit(message); 
+            }
+            else if (header[0].Equals('E')) 
+            { 
+                EmailSplit(message); 
+            }
         }
 
         // Spilts message into vars,
@@ -56,8 +74,6 @@ namespace NBMSystem
         private void SmsSplit(MessageInput message)
         {
             //Assigning variables
-            string Header = message.Header;
-            string Body = message.Body;
             string Number = message.Body.Split(' ')[0];
             string Sender = message.Body.Split(' ')[1];
             string Text = message.Body.Replace(Sender, null).Replace(Number, null);
@@ -105,14 +121,12 @@ namespace NBMSystem
                             }
                             else
                             {
-                                string newtext = Text.Replace(word, words);
-                                Text = newtext;
+                                Text = Text.Replace(word, words);
                             }
                         }
                         catch
                         {
-                            string newtext = Text.Replace(word, words);
-                            Text = newtext;
+                            Text = Text.Replace(word, words);
                         }
                     }
                 }
@@ -120,8 +134,8 @@ namespace NBMSystem
             // Creating Object
             SmsMessageType SMS = new SmsMessageType()
             {
-                Header = Header,
-                Body = Body,
+                Header = message.Header,
+                Body = message.Body,
                 SmsSender = Sender,
                 SmsNumber = Number,
                 SmsText = Text
@@ -141,47 +155,33 @@ namespace NBMSystem
         private void EmailSplit(MessageInput message)
         {
             // Assigning variables
-            string Header = message.Header;
-            string Body = message.Body;
-            string Sender = message.Body.Split(',')[0];
-            string Subject = message.Body.Split(',')[1];
-            string Text = Body.Split(',')[2];
-
-            // Incident List
-            List<string> incidents = new List<string>();
-            incidents.Add("Theft");
-            incidents.Add("Staff_Attack");
-            incidents.Add("ATM_Theft");
-            incidents.Add("Raid");
-            incidents.Add("Customer_Attack");
-            incidents.Add("Staff_Abuse");
-            incidents.Add("Bomb_Threat");
-            incidents.Add("Terrorism");
-            incidents.Add("Suspicious_Incident");
-            incidents.Add("Intelligence");
-            incidents.Add("Cash Loss");
+            string header = message.Header;
+            string body = message.Body;
+            string sender = message.Body.Split(',')[0];
+            string subject = message.Body.Split(',')[1];
+            string text = body.Split(',')[2];
 
             // Checking for SIR in Subject
-            if(Subject.Contains("SIR"))
+            if(subject.Contains("SIR"))
             {
-                Text = Body.Split(',')[2] + ", " + Body.Split(',')[3] + ", " + Body.Split(',')[4];
-                Boolean sir_logged = false;
+                text = body.Split(',')[2] + ", " + body.Split(',')[3] + ", " + body.Split(',')[4];
+                Boolean sirLogged = false;
 
-                foreach (string incident in incidents)
+                foreach (string incident in this.incidentList)
                 {
-                    string email_sir = ((Text.Split(',')[1]).ToLower());
-                    email_sir = Regex.Replace(email_sir, @"\s+", "");
-                    if (email_sir == incident)
+                    string emailSir = ((text.Split(',')[1]).ToLower());
+                    emailSir = Regex.Replace(emailSir, @"\s+", "");
+                    if (emailSir == incident)
                     {
-                        sir_reports.Add(Text.Split(',')[0], Text.Split(',')[1]);
-                        SIRListBox.Items.Add(email_sir + ", " + Sender);
-                        sir_logged = true;
+                        sirReports.Add(text.Split(',')[0], text.Split(',')[1]);
+                        SirListBox.Items.Add(emailSir + ", " + sender);
+                        sirLogged = true;
                     }
 
                 }
-                if (!sir_logged)
+                if (!sirLogged)
                 {
-                    throw new ArgumentException("S.I.R cannot be found");
+                    throw new ArgumentException("SIR cannot be found");
                 }
 
             }
