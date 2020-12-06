@@ -44,7 +44,7 @@ namespace NBMSystem.MessageTypes
         public string EmailText
         {
             get { return eText; }
-            set { if ((value.Length > 1028) || (value.Length < 1))
+            set { if ((value.Length < 1) || (value.Length > 1028))
                 {
                     throw new ArgumentException("Error: The email text length must be between 1 and 1028 characters long");
                 }

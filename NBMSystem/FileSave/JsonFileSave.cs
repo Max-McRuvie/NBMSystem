@@ -9,7 +9,7 @@ namespace NBMSystem.FileSave
     {
         public void saveToJson(List<MessageInput> message)
         {
-            using (StreamWriter file = File.CreateText(@"../../../messages.json"))
+            using (StreamWriter file = File.CreateText(@"../../../savedMessages.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.Serialize(file, message);

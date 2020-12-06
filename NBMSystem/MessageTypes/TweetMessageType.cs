@@ -11,7 +11,7 @@ namespace NBMSystem.MessageTypes
         public string TweetSender
         {
             get { return tSender; }
-            set { if(!value.StartsWith("@") || value.Length > 15 || value.Length < 1)
+            set { if(!value.StartsWith("@") || value.Length < 1 || value.Length > 15 )
                 {
                     throw new ArgumentException("Error: The tweet sender must start with the @ symbol, and contain a maximum of 15 characters");
                 }
