@@ -83,7 +83,7 @@ namespace NBMSystem
 
             //checking abbreviations
             List<string> abbreviations = new List<string>();
-            List<string> abb_extended = new List<string>();
+            List<string> abr_extended = new List<string>();
 
             using (var reader = new StreamReader(@"../../../Documents/textwords.csv"))
             {
@@ -92,7 +92,7 @@ namespace NBMSystem
                     var line = reader.ReadLine();
                     var words = line.Split(',');
                     abbreviations.Add(words[0]);
-                    abb_extended.Add(words[1]);
+                    abr_extended.Add(words[1]);
                 }
             }
             foreach (string word in text.Split(' '))
@@ -103,21 +103,18 @@ namespace NBMSystem
                     {
                         //finding abbreviations and there meaning
                         int index = abbreviations.IndexOf(abr);
-                        string all = abb_extended[index];
+                        string all = abr_extended[index];
 
                         //extending abbreviations
                         string words = word + " <" + all + "> ";
 
-                        int index_2 = text.IndexOf(word);
-
-                        char wordFinal;
-                        string wordFinal2;
+                        int index2 = text.IndexOf(word);
 
                         try
                         {
-                            wordFinal = text[index_2 + 1 + word.Length];
+                            char wordFinal = text[index2 + 1 + word.Length];
 
-                            wordFinal2 = wordFinal + "";
+                            string wordFinal2 = wordFinal + "";
                             if (wordFinal2.Contains("<"))
                             {
                                 break;
@@ -285,14 +282,11 @@ namespace NBMSystem
 
                         int index_2 = text.IndexOf(word);
 
-                        char wordFinal;
-                        string wordFinal2;
-
                         try
                         {
-                            wordFinal = text[index_2 + 1 + word.Length];
+                            char wordFinal = text[index_2 + 1 + word.Length];
 
-                            wordFinal2 = wordFinal + "";
+                            string wordFinal2 = wordFinal + "";
                             if (wordFinal2.Contains("<"))
                             {
                                 break;
