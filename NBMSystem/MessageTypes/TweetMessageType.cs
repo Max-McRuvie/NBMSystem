@@ -25,9 +25,9 @@ namespace NBMSystem.MessageTypes
         public string TweetText
         {
             get { return tText; }
-            set { if(value.Length > 140 || value.Length < 1)
+            set { if(value.Length < 1 || value.Length > 140)
                 {
-                    throw new ArgumentException("Error: The tweet sender must start with the @ symbol, and be a length of less than 15");
+                    throw new ArgumentException("Error: The text length must be between 1 and 140 chars");
                 }
                 else
                 {
