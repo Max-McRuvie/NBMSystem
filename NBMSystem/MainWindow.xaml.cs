@@ -152,6 +152,9 @@ namespace NBMSystem
             TextOutput.Text = sms.SmsText;
         }
 
+        // Spilts message into vars,
+        // checks for SIRs &&  URLs,
+        // creates email object
         private void EmailSplit(MessageInput message)
         {
             // Assigning variables
@@ -222,7 +225,10 @@ namespace NBMSystem
             TextOutput.Text = email.EmailText;
         }
 
-        // Tweet Split
+        // Spilts message into vars,
+        // checks @s and #s,
+        // checks for abbreviation,
+        // creates tweet object
         private void TweetSplit(MessageInput message)
         {
             // Declaring variables
@@ -328,6 +334,7 @@ namespace NBMSystem
             }
         }
 
+        // Saves to JSON
         private void JsonSave(object sender, RoutedEventArgs e)
         {
             JsonFileSave json = new JsonFileSave();
