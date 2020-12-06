@@ -2,6 +2,7 @@
 using NBMSystem.ViewModels;
 using NBMSystem.Input;
 using NBMSystem.MessageTypes;
+using NBMSystem.FileSave;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -331,6 +332,12 @@ namespace NBMSystem
             {
                 TrendingListBox.Items.Add(item);
             }
+        }
+
+        private void JsonSave(object sender, RoutedEventArgs e)
+        {
+            JsonFileSave json = new JsonFileSave();
+            json.saveToJson(messagesList);
         }
     }
 }
