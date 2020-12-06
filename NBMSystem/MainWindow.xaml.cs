@@ -83,7 +83,7 @@ namespace NBMSystem
 
             //checking abbreviations
             List<string> abbreviations = new List<string>();
-            List<string> abr_extended = new List<string>();
+            List<string> abrExtended = new List<string>();
 
             using (var reader = new StreamReader(@"../../../Documents/textwords.csv"))
             {
@@ -92,7 +92,7 @@ namespace NBMSystem
                     var line = reader.ReadLine();
                     var words = line.Split(',');
                     abbreviations.Add(words[0]);
-                    abr_extended.Add(words[1]);
+                    abrExtended.Add(words[1]);
                 }
             }
             foreach (string word in text.Split(' '))
@@ -103,7 +103,7 @@ namespace NBMSystem
                     {
                         //finding abbreviations and there meaning
                         int index = abbreviations.IndexOf(abr);
-                        string all = abr_extended[index];
+                        string all = abrExtended[index];
 
                         //extending abbreviations
                         string words = word + " <" + all + "> ";
@@ -255,7 +255,7 @@ namespace NBMSystem
             }
             //checking abbreviations
             List<string> abbreviations = new List<string>();
-            List<string> abb_extended = new List<string>();
+            List<string> abrExtended = new List<string>();
 
             using (var reader = new StreamReader(@"../../../Documents/textwords.csv"))
             {
@@ -264,7 +264,7 @@ namespace NBMSystem
                     var line = reader.ReadLine();
                     var words = line.Split(',');
                     abbreviations.Add(words[0]);
-                    abb_extended.Add(words[1]);
+                    abrExtended.Add(words[1]);
                 }
             }
             foreach (string word in text.Split(' '))
@@ -275,16 +275,16 @@ namespace NBMSystem
                     {
                         //finding abbreviations and there meaning
                         int index = abbreviations.IndexOf(abr);
-                        string all = abb_extended[index];
+                        string all = abrExtended[index];
 
                         //extending abbreviations
                         string words = word + " <" + all + "> ";
 
-                        int index_2 = text.IndexOf(word);
+                        int index2 = text.IndexOf(word);
 
                         try
                         {
-                            char wordFinal = text[index_2 + 1 + word.Length];
+                            char wordFinal = text[index2 + 1 + word.Length];
 
                             string wordFinal2 = wordFinal + "";
                             if (wordFinal2.Contains("<"))
